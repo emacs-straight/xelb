@@ -1,13 +1,13 @@
 ;;; xelb.el --- X protocol Emacs Lisp Binding  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2015-2019 Free Software Foundation, Inc.
+;; Copyright (C) 2015-2024 Free Software Foundation, Inc.
 
 ;; Author: Chris Feng <chris.w.feng@gmail.com>
-;; Maintainer: Chris Feng <chris.w.feng@gmail.com>
+;; Maintainer: Adrián Medraño Calvo <adrian@medranocalvo.com>, Steven Allen <steven@stebalien.com>, Daniel Mendler <mail@daniel-mendler.de>
 ;; Version: 0.18
-;; Package-Requires: ((emacs "24.4") (cl-generic "0.2"))
+;; Package-Requires: ((emacs "26.1"))
 ;; Keywords: unix
-;; URL: https://github.com/ch11ng/xelb
+;; URL: https://github.com/emacs-exwm/xelb
 
 ;; This file is part of GNU Emacs.
 
