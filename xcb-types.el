@@ -72,52 +72,6 @@ FORMAT-STRING is a string specifying the message to output, as in
                         ,@objects)
      nil))
 
-;;;; Fix backward compatibility issues with Emacs 24
-
-(eval-and-compile
-  (when (< emacs-major-version 25)
-    ;; Copied from Emacs 25 with documentation and comments stripped.
-    ;; The version of `with-slots' in Emacs 24 is buggy and inefficient.
-    (defmacro with-slots (spec-list object &rest body)
-      (declare (indent 2) (debug (sexp sexp def-body)))
-      (require 'cl-lib)
-      (macroexp-let2 nil object object
-        `(cl-symbol-macrolet
-             ,(mapcar (lambda (entry)
-                        (let ((var  (if (listp entry) (car entry) entry))
-                              (slot (if (listp entry) (cadr entry) entry)))
-                          (list var `(slot-value ,object ',slot))))
-                      spec-list)
-           ,@body)))))
-
-;; Backport some functions to Emacs 24
-
-(eval-and-compile
-  (unless (fboundp 'eieio-class-slots)
-    (defun eieio-class-slots (class)
-      (let* ((tmp (get class 'eieio-class-definition))
-             (names (aref tmp 5))
-             (initforms (aref tmp 6))
-             (types (aref tmp 8))
-             result)
-        (dotimes (i (length names))
-          (setq result (nconc result (list (vector (elt names i)
-                                                   (elt initforms i)
-                                                   (elt types i))))))
-        result))))
-
-(eval-and-compile
-  (unless (fboundp 'eieio-slot-descriptor-name)
-    (defsubst eieio-slot-descriptor-name (slot) (aref slot 0))))
-
-(eval-and-compile
-  (unless (fboundp 'cl--slot-descriptor-initform)
-    (defsubst cl--slot-descriptor-initform (slot) (aref slot 1))))
-
-(eval-when-compile
-  (unless (fboundp 'cl--slot-descriptor-type)
-    (defsubst cl--slot-descriptor-type (slot) (aref slot 2))))
-
 ;;;; Utility functions
 
 (defsubst xcb:-pack-u1 (value)
