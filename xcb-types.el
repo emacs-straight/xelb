@@ -54,7 +54,8 @@
 (require 'xcb-debug)
 
 (define-minor-mode xcb:debug
-  "Debug-logging enabled if non-nil"
+  "Debug-logging enabled if non-nil."
+  :group 'debug
   :global t)
 
 (defmacro xcb:-log (&optional format-string &rest objects)
@@ -370,8 +371,8 @@ FORMAT-STRING is a string specifying the message to output, as in
 (defmacro xcb:deftypealias (new-type old-type)
   "Define NEW-TYPE as an alias of type OLD-TYPE.
 
-Also the fundamental type is stored in 'the xcb--typealias' variable
-property (for internal use only)."
+Also the fundamental type is stored in the `xcb--typealias'
+variable property (for internal use only)."
   `(progn
      ;; FIXME: `new-type' should probably just not be eval'd at all,
      ;; but that requires changing all callers not to quote their arg.
@@ -709,7 +710,7 @@ and the second the consumed length."
   ((~code :type xcb:-u1))
   :documentation "Event type.")
 ;; Implemented in 'xcb.el'
-(cl-defgeneric xcb:-error-or-event-class->number ((obj xcb:connection) class))
+(cl-defgeneric xcb:-error-or-event-class->number (obj class))
 ;;
 (cl-defmethod xcb:marshal ((obj xcb:-event) connection &optional sequence)
   "Return the byte-array representation of event OBJ.
