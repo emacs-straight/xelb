@@ -52,7 +52,8 @@
 
 ;;; Code:
 
-(eval-when-compile (require 'cl-lib))
+(require 'cl-lib)
+
 (require 'xcb-xproto)
 
 (defvar xcb:connection-timeout 3 "Connection timeout.")
@@ -418,9 +419,8 @@ Concurrency is disabled as it breaks the orders of errors, replies and events."
               (setq data (aref event 1)
                     synthetic (aref event 2))
               (dolist (listener (aref event 0))
-                (unwind-protect
-                    (xcb-debug:backtrace-on-error
-                     (funcall listener data synthetic))))))
+                (xcb-debug:backtrace-on-error
+                 (funcall listener data synthetic)))))
         (cl-decf event-lock)))))
 
 (cl-defmethod xcb:disconnect ((obj xcb:connection))
@@ -552,10 +552,10 @@ classes of EVENT (since they have the same event number)."
          (cache (slot-value obj 'request-cache)))
     (when extension-opcode
       (setq msg (vconcat (vector extension-opcode) msg))
-      (setq len (1+ len)))
+      (cl-incf len))
     (when (> 2 (length msg))   ;for short message (e.g. GetInputFocus)
       (setq msg (vconcat msg [0]))
-      (setq len (1+ len)))
+      (cl-incf len))
     (setq msg
           (vconcat (substring msg 0 2)
                    (funcall (if (slot-value request '~lsb) #'xcb:-pack-u2-lsb
