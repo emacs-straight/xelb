@@ -1,6 +1,6 @@
 ;;; xcb-present.el --- X11 Present extension  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2015-2024 Free Software Foundation, Inc.
+;; Copyright (C) 2015-2025 Free Software Foundation, Inc.
 
 ;; This file is part of GNU Emacs.
 
@@ -112,8 +112,8 @@
    (divisor :initarg :divisor :type xcb:CARD64)
    (remainder :initarg :remainder :type xcb:CARD64)
    (notifies~ :initform
-	      '(name notifies type xcb:present:Notify size nil)
-	      :type xcb:-list)
+              '(name notifies type xcb:present:Notify size nil)
+              :type xcb:-list)
    (notifies :initarg :notifies :type xcb:-ignore)))
 
 (defclass xcb:present:NotifyMSC
@@ -169,8 +169,8 @@
    (divisor :initarg :divisor :type xcb:CARD64)
    (remainder :initarg :remainder :type xcb:CARD64)
    (notifies~ :initform
-	      '(name notifies type xcb:present:Notify size nil)
-	      :type xcb:-list)
+              '(name notifies type xcb:present:Notify size nil)
+              :type xcb:-list)
    (notifies :initarg :notifies :type xcb:-ignore)))
 
 (defclass xcb:present:Generic
@@ -247,8 +247,8 @@
    (divisor :initarg :divisor :type xcb:CARD64)
    (remainder :initarg :remainder :type xcb:CARD64)
    (notifies~ :initform
-	      '(name notifies type xcb:present:Notify size nil)
-	      :type xcb:-list)
+              '(name notifies type xcb:present:Notify size nil)
+              :type xcb:-list)
    (notifies :initarg :notifies :type xcb:-ignore)))
 
 (defconst xcb:present:event-number-class-alist

@@ -1,6 +1,6 @@
 ;;; xcb-xc_misc.el --- X11 XCMisc extension  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2015-2024 Free Software Foundation, Inc.
+;; Copyright (C) 2015-2025 Free Software Foundation, Inc.
 
 ;; This file is part of GNU Emacs.
 
@@ -67,9 +67,9 @@
    (ids-len :initarg :ids-len :type xcb:CARD32)
    (pad~1 :initform 20 :type xcb:-pad)
    (ids~ :initform
-	 '(name ids type xcb:CARD32 size
-		(xcb:-fieldref 'ids-len))
-	 :type xcb:-list)
+         '(name ids type xcb:CARD32 size
+                (xcb:-fieldref 'ids-len))
+         :type xcb:-list)
    (ids :initarg :ids :type xcb:-ignore)))
 
 
