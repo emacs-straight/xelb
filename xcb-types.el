@@ -54,6 +54,13 @@
 (require 'eieio)
 (require 'xcb-debug)
 
+;; We can't require `xcb-xkb' because it requires us.
+(eieio-declare-slots xkbType)
+;; We can't require `xcb-preset' because it requires us.
+(eieio-declare-slots extension) ;; xcb:preset:Generic
+;; We can't require `xcb-present' because it requires us.
+(eieio-declare-slots ~sequence evtype) ;xcb:present:Generic
+
 ;; Require subr-x on Emacs < 29 for when-let*, it has since been moved to
 ;; subr (autoloaded).
 (eval-when-compile (when (< emacs-major-version 29) (require 'subr-x)))
@@ -831,7 +838,7 @@ This method auto-pads short results to 32 bytes."
           ;; XKB event.
           (setf (slot-value obj 'xkbType) (aref event-number 0))
         ;; Generic event.
-        (setf (slot-value obj 'extensions) (aref event-number 0)
+        (setf (slot-value obj 'extension) (aref event-number 0)
               (slot-value obj 'evtype) (aref event-number 1))))
     (when (slot-exists-p obj '~sequence)
       (setf (slot-value obj '~sequence) (or sequence 0)))
