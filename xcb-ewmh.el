@@ -17,7 +17,7 @@
 ;; GNU General Public License for more details.
 
 ;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -31,7 +31,7 @@
 ;; + Initializing this library auto loads and initializes 'xcb-icccm'.
 
 ;; References:
-;; + EWMH (http://standards.freedesktop.org/wm-spec/wm-spec-latest.html)
+;; + EWMH (https://specifications.freedesktop.org/wm-spec/latest/)
 ;; + xcb/util-wm (git://anongit.freedesktop.org/xcb/util-wm)
 
 ;;; Code:

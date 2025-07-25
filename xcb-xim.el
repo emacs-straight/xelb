@@ -17,7 +17,7 @@
 ;; GNU General Public License for more details.
 
 ;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -33,7 +33,7 @@
 ;; + Add extension support.
 
 ;; References:
-;; + XIM (http://www.x.org/releases/X11R7.7/doc/libX11/XIM/xim.txt)
+;; + XIM (https://www.x.org/releases/X11R7.7/doc/libX11/XIM/xim.txt)
 
 ;;; Code:
 
